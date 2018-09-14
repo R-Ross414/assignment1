@@ -4,6 +4,9 @@ Rachel Ross
 Chapman CPSC350-02
 Assignment 1 - main.cpp, Assignment1.h, Assignment1.cpp
 
+
+With regards to inconsistencies, I was not able to finish this in time. I started working on it the day that it was assigned and I was able to understand everything conceptually and write out structure and pseudocode. I have put in over 30 hours into this assignment because at first I tried to separate everything into classes and make it more object oriented. However, I believe that I wasn't making enough progress and tried to put more into the main file. I consulted a lot of resources and have tried to get all of the help I can but I couldn't make enough progress in time. 
+
 These were the resources used:
 
 Websites
