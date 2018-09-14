@@ -6,28 +6,41 @@
 using namespace std; //standard C++ library
 
 //helper function
-int get_length(string xyz, int index){
+int get_length(string xyz, int index) {
   int count = 0;
-  int i = 0;
+  string s = xyz;
 
-  while (count - 1  < index)
+
+for (int i = 0; i < index; i++)
+{
+  int pos = s.find(" ");
+
+  s = s.substr(pos, s.size());
+
+    cout << s.find(" ", pos) << endl;
+}
+
+cout << s << endl;
+
+  /*while (count - 1  < index)
   {
+
+    if (count - 1 < index)
+        {
+          i++;
+        }
     if (xyz[i] = ' ')
     {
       count++;
     }
 
-    if (count - 1 < index)
-    {
-      i++;
-    }
   }
-  i++; 
-  cout << count << endl;
+  i++;
+  //cout << count << endl;
 
   //string s = "";
 
-int j = i + 1;
+int j = i;
   while (xyz[j] != ' ')
   {
     //s += xyz[i];
@@ -36,10 +49,10 @@ int j = i + 1;
     //cout << xyz[i] << endl;
   }
 
-//cout << i << endl;
+//cout << j << endl;
 
   string s = xyz.substr(i, j - i);
-  //cout << s << endl;
+  //cout << s << endl; */
   return 0;
 }
 
@@ -89,18 +102,6 @@ string string_lengths;
 ///////////////////////read file line by line///////////////////////
 while (getline (inputFile, DNA_str))
 {
-  //while loop for reading lines for sum
-  //DNA_str = DNA_str.toupper();
-
-  /*total_str++;
-  sum += DNA_str.size();
-
-
-  DNA_size = DNA_str.size();
-  string length = to_string(DNA_str.size());
-  //cout << length << endl;
-  //cout << DNA_str.size() << endl;
-  string_lengths += to_string(DNA_size); */
 
 
   int count = 0;
