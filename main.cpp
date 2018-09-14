@@ -2,26 +2,61 @@
 #include <iostream> //library for IO
 #include <fstream> //allows file processing
 #include <string> //string abilities
-//#include <iomanip> //keep?
 
 using namespace std; //standard C++ library
+
+//helper function
+int get_length(string xyz, int index){
+  int count = 0;
+  int i = 0;
+
+  while (count - 1  < index)
+  {
+    if (xyz[i] = ' ')
+    {
+      count++;
+    }
+
+    if (count - 1 < index)
+    {
+      i++;
+    }
+  }
+  i++; 
+  cout << count << endl;
+
+  //string s = "";
+
+int j = i + 1;
+  while (xyz[j] != ' ')
+  {
+    //s += xyz[i];
+    j++;
+
+    //cout << xyz[i] << endl;
+  }
+
+//cout << i << endl;
+
+  string s = xyz.substr(i, j - i);
+  //cout << s << endl;
+  return 0;
+}
+
 
 int main(int argc, char* argv[])
 {
 //input file
 /*/////////////////////////////////////////////////////////////////*/
-    //input file name supplied through cmd line
-    if (argc != 2) {
-      cout << "No input file name found" << endl;
-      cin.get();
-      return 0;
-    }
 
 //now we have a file name
 //declare object for string
-string file_name(argv[1]);
+cout << "Enter the name of the file" << endl;
+string file_name;
+cin >> file_name;
+
 //creating the file input stream
-ifstream inputFile("dnasample.txt");
+ifstream inputFile(file_name);
 //check if file opened properly
 if (!inputFile.is_open())
 {
@@ -43,18 +78,68 @@ int countG = 0;
 int sum = 0;
 int total_str = 0;
 
+//store the DNA string lengths
+string lengths = "";
+
 //for hodling dna string we need a local variable
-string DNA_str;
+string DNA_str = "";
+int DNA_size;
+string string_lengths;
 
 ///////////////////////read file line by line///////////////////////
 while (getline (inputFile, DNA_str))
 {
-  cout << DNA_str << '\n'; //PRINTS DNA STRINGS
-
   //while loop for reading lines for sum
-  total_str++;
+  //DNA_str = DNA_str.toupper();
+
+  /*total_str++;
   sum += DNA_str.size();
 
+
+  DNA_size = DNA_str.size();
+  string length = to_string(DNA_str.size());
+  //cout << length << endl;
+  //cout << DNA_str.size() << endl;
+  string_lengths += to_string(DNA_size); */
+
+
+  int count = 0;
+
+  for (int i = 0; i < DNA_str.size(); ++i){
+    if (!(DNA_str[i] == 'A' || DNA_str[i] == 'T' || DNA_str[i] == 'C' || DNA_str[i] == 'G'))
+      {
+          count++;
+      }
+    else {DNA_str = DNA_str.substr(count, DNA_str.size());
+      break; }
+  }
+
+  //DNA_str = DNA_str.substr(count , DNA_str.size());
+
+  for (int i = 0; i < DNA_str.size(); ++i)
+  {
+    //variable for checking character
+    //char ch = DNA_str[i];
+    //if statement to check validity of text content
+    if (!(DNA_str[i] == 'A' || DNA_str[i] == 'T' || DNA_str[i] == 'C' || DNA_str[i] == 'G'))
+      {
+          DNA_str = DNA_str.substr(0, i);
+          break;
+
+      }
+  }
+
+//getting sum of all of the lengths of strings
+sum += DNA_str.size();
+
+string_lengths += ' ' + to_string(DNA_str.size());
+
+
+  //cout << DNA_str << endl;
+  //cout << DNA_str.size() << endl;
+
+
+//print out the DNA string
 //count each frequency for each nucleotide base
 //this will be later used for calculating probability
   countC += calc_frequency(DNA_str, 'C');
@@ -63,6 +148,13 @@ while (getline (inputFile, DNA_str))
   countT += calc_frequency(DNA_str, 'T');
 
 }
+cout << string_lengths << " " << endl;
+for (int i = 0; i < 4; i++)
+{
+  get_length(string_lengths, i);
+}
+
+//cout << string_lengths << " " << endl;
 
 //close input file when done dealing with it
 inputFile.close();
